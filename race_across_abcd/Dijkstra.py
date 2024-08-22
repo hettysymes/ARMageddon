@@ -1,16 +1,17 @@
 import heapq
 import time
- 
+
 def read_data_grid(file_path):
     with open(file_path, 'r') as file:
         grid = []
         for line in file:
-            # Convert each line into a list of integers
-            grid.append(list(map(int, line.split())))
+            # Convert each character to an integer
+            grid.append([int(char) for char in line.strip()])
     return grid
- 
+
 def dijkstra_min_path_sum(grid):
     rows, cols = len(grid), len(grid[0])
+    print(f"Grid dimensions in function: {rows} x {cols}")
     directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]  # Right, Down, Left, Up
     dist = [[float('inf')] * cols for _ in range(rows)]
     dist[0][0] = grid[0][0]
@@ -21,20 +22,21 @@ def dijkstra_min_path_sum(grid):
             return current_dist
         for dr, dc in directions:
             nr, nc = r + dr, c + dc
-            if 0 <= nr < rows and 0 <= nc < cols:
+            if 0 <= nr < rows and 0 <= nc < cols: 
                 new_dist = current_dist + grid[nr][nc]
                 if new_dist < dist[nr][nc]:
                     dist[nr][nc] = new_dist
                     heapq.heappush(pq, (new_dist, nr, nc))
     return dist[rows-1][cols-1]
- 
+
 # Read the grid from the file
-grid = read_data_grid('data_grid.txt')
- 
-# Run the Dijkstra's algorithm on the grid
+# file_path = '/Users/jaecho01/ARMageddon/race_across_abcd/grid_data.txt'
+file_path = '/Users/jaecho01/ARMageddon/race_across_abcd/data_grid.txt'
+grid = read_data_grid(file_path)
+
 start_time = time.time()
 result = dijkstra_min_path_sum(grid)
 end_time = time.time()
- 
+
 print("Minimum Path Sum using Dijkstra:", result)
 print(f"Time taken: {end_time - start_time:.6f} seconds")
