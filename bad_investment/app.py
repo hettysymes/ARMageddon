@@ -4,8 +4,8 @@ app = Flask(__name__)
 def index():
     if request.method == 'POST':
         # Get the text from the textbox
-        user_input = request.form['text_box']
-        return f"You entered: {user_input}"
+        amount_spent = request.form['tb_amount_spent']
+        return f"You entered: {amount_spent}"
     return render_template('index.html')
 if __name__ == '__main__':
     app.run()
