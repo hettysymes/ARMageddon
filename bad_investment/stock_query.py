@@ -25,7 +25,7 @@ def get_price_at_date(symbol, date):
             data = json.loads(response.text)
             if data["status"] == "ok":
                 return {"price": float(data["values"][0]["close"]), "date": date, "success": True}
-            time.sleep(0.1)
+            time.sleep(1)
         date -= timedelta(days=1)
     return {"price": "", "date": "", "success": False}
 
