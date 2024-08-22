@@ -6,16 +6,21 @@
     <title>Text Box Example</title>
 </head>
 <body>
-    <h1>Amount spent on stock</h1>
-    <form method="POST">
-        <input type="text" name="tb_amount_spent" placeholder="110">
+    <h1>
+        Calculate your stock with the ARMageddon!
+    </h1>
+    <form action="/" method="post">
+        <!-- Stock symbol -->
+        <label for="stock_symbol">Stock symbol</label><br>
+        <input type="text" id="stock_symbol" name="stock_symbol" value="ARM" required><br><br>
+        <!-- Price bought -->
+        <label for="price_bought">Price bought / USD</label><br>
+        <input type="number" id="price_bought" name="price_bought" value="1.50" step="0.01" required><br><br>
+        <!-- Date time bought -->
+        <label for="date_bought">Date bought</label><br>
+        <input type="date" id="date_bought" name="date_bought" value="2024-01-01" required><br><br>
+        <!-- Submit Button -->
         <input type="submit" value="Submit">
     </form>
-    <!-- <h1>Date bought</h1>
-    <form method="POST">
-        <input type="text" name="tb_date_bought" placeholder="19/12/07">
-        <input type="submit" value="Submit">
-    </form> -->
-    
 </body>
 </html>
