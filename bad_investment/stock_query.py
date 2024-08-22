@@ -39,4 +39,4 @@ def calculate_profit(symbol, price_bought, date_bought):
         return {"profit": "", "success": False}
     now_price = now_price_res["price"]
     # Return profit
-    return {"profit": num_stock*(now_price - old_price), "success": True}
+    return {"profit": num_stock*(now_price - old_price), "old_price": old_price, "num_stock": num_stock, "now_price": now_price, "success": True}
