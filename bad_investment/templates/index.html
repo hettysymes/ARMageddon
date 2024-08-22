@@ -8,16 +8,20 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body class="p-5">
-    <div class="bg-primary text-white text-center py-5 px-15 shadow-lg rounded">
+    <div class="bg-primary text-white text-center py-5 px-5 shadow-lg rounded">
         <h1 class="display-7">Get Rich Fast with This Secret Method!</h1>
-        <p class="lead">Start with just $100 and watch your investment skyrocket.</p>
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-light btn-lg mt-3">User Guide</a>
+        <p class="lead">Start with just $100 and watch your investment skyrocket.*</p>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-light btn-lg mt-3">Find out more</a>
     </div>
-    <div class="text-center mb-10">
-        <p class="fs-1">Calculate your stock with the ARMageddon!</p>
-        <p class="fs-5">Turn $100 Into $10,000 Overnight with This One Trick!*</p>
+    <div class="text-center mt-4">
+        <p class="fs-1">Calculate your stock with
+            <a href="https://www.arm.com" class="text-decoration-none" style="background-color: black; padding: 10px; border-radius: 8px;">
+                <span style="background-color: black; color: white; padding: 5px 5px; border-radius: 4px;">ARM</span>
+                <span style="background-color: #f3801d; color: black; padding: 5px 5px; border-radius: 4px;">ageddon</span>
+            </a>
+        </p>
     </div>
-    <form action="/" method="post" class="text-center">
+    <form action="/" method="post" class="text-center mb-4">
         <!-- Stock symbol -->
         <label for="stock_symbol">Stock symbol</label><br>
         <input type="text" id="stock_symbol" name="stock_symbol" value="ARM" required><br><br>
@@ -28,7 +32,8 @@
         <label for="date_bought">Date bought</label><br>
         <input type="date" id="date_bought" name="date_bought" value="2024-01-01" required><br><br>
         <!-- Submit Button -->
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" class="btn btn-primary btn-lg"></input>
     </form>
+    <div class="text-center fs-2">{{ profit_msg }}</div>
 </body>
 </html>
