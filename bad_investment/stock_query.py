@@ -3,7 +3,6 @@ import requests
 from dotenv import load_dotenv
 import os
 from datetime import timedelta, datetime
-import time
 
 # Load the API Key
 load_dotenv()
@@ -11,22 +10,18 @@ API_KEY = os.getenv('TWELVE_DATA_API_KEY')
 
 # Get the price of a stock (symbol) at a given date (date)
 def get_price_at_date(symbol, date):
-    DAYS_TO_CHECK = 10
-    TIMES_TO_CHECK_EACH_DAY = 2
     request_data_format = "%Y-%m-%d"
-    for _ in range(DAYS_TO_CHECK):
-        next_date = date + timedelta(days=1)
-        date_str = date.strftime(request_data_format)
-        next_date_str = next_date.strftime(request_data_format)
-        request_str = f"https://api.twelvedata.com/time_series?apikey={API_KEY}&interval=1day&symbol={symbol}&start_date={date_str} 00:00:00&format=JSON&end_date={next_date_str} 00:00:00"
-        for _ in range(TIMES_TO_CHECK_EACH_DAY):
-            print(f"INFO:finding {symbol} stock between {date_str} and {next_date_str}")
-            response = requests.get(request_str)
-            data = json.loads(response.text)
-            if data["status"] == "ok":
-                return {"price": float(data["values"][0]["close"]), "date": date, "success": True}
-            time.sleep(1)
-        date -= timedelta(days=1)
+    to_date = date + timedelta(days=1)
+    from_date = date - timedelta(days=10)
+    to_date_str = to_date.strftime(request_data_format)
+    from_date_str = from_date.strftime(request_data_format)
+    request_str = f"https://api.twelvedata.com/time_series?apikey={API_KEY}&interval=1day&symbol={symbol}&start_date={from_date_str} 00:00:00&format=JSON&end_date={to_date_str} 00:00:00"
+    print(f"INFO:finding {symbol} stock between {from_date_str} and {to_date_str}")
+    response = requests.get(request_str)
+    data = json.loads(response.text)
+    if data["status"] == "ok":
+        # Get result found from most recent date
+        return {"price": float(data["values"][0]["close"]), "date": date, "success": True}
     return {"price": "", "date": "", "success": False}
 
 # Calculate the profit
