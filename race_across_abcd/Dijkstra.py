@@ -11,7 +11,6 @@ def read_data_grid(file_path):
 
 def dijkstra_min_path_sum(grid):
     rows, cols = len(grid), len(grid[0])
-    print(f"Grid dimensions in function: {rows} x {cols}")
     directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]  # Right, Down, Left, Up
     dist = [[float('inf')] * cols for _ in range(rows)]
     dist[0][0] = grid[0][0]
