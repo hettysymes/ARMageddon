@@ -59,7 +59,6 @@ int main() {
             std::vector<int> row;
             for (char ch : line) {
                 // Convert each character to an integer and add to the row
-                printf("%c", ch);
                 row.push_back(ch - '0');
             }
             // Add the row to the matrix
