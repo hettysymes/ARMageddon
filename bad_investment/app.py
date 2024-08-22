@@ -13,9 +13,9 @@ def index():
         if res["success"]:
             profit = res["profit"]
             if (profit >= 0):
-                print(f"Your PROFIT is: {profit} USD")
+                return f"Your PROFIT is: {profit} USD"
             else:
-                print(f"Your LOSS is: {-profit} USD")
+                return f"Your LOSS is: {-profit} USD"
         else:
             return "ERROR: could not find the price at this date in our system :("
     return render_template('index.html')
