@@ -1,0 +1,4 @@
+obj_dir
+logs
+default_*
+waveform.vcd
