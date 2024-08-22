@@ -4,12 +4,14 @@ from dotenv import load_dotenv
 import os
 from datetime import timedelta, datetime
 
+# Load the API Key
 load_dotenv()
 API_KEY = os.getenv('TWELVE_DATA_API_KEY')
 
+# Get the price of a stock (symbol) at a given date (date)
 def get_price_at_date(symbol, date):
-    DAYS_TO_TRY = 10
-    for i in range(DAYS_TO_TRY):
+    DAYS_TO_CHECK = 10
+    for _ in range(DAYS_TO_CHECK):
         next_date = date + timedelta(days=1)
         request_data_format = "%Y-%m-%d"
         date_str = date.strftime(request_data_format)
@@ -23,6 +25,7 @@ def get_price_at_date(symbol, date):
         date -= timedelta(days=1)
     return {"price": "", "date": "", "success": False}
 
+# Calculate the profit
 def calculate_profit(symbol, price_bought, date_bought):
     # Get price of stock at time of buy
     old_price_res = get_price_at_date(symbol, date_bought)
