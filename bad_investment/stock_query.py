@@ -17,7 +17,7 @@ def get_price_at_date(symbol, date):
         request_data_format = "%Y-%m-%d %H:%M:%S"
         date_str = date.strftime(request_data_format)
         next_date_str = next_date.strftime(request_data_format)
-        print(f"INFO:finding ${symbol} stock between {date_str} and {next_date_str}")
+        print(f"INFO:finding {symbol} stock between {date_str} and {next_date_str}")
         request_str = f"https://api.twelvedata.com/time_series?apikey={API_KEY}&interval=1day&symbol={symbol}&start_date={date_str}&format=JSON&end_date={next_date_str}"
         response = requests.get(request_str)
         data = json.loads(response.text)
