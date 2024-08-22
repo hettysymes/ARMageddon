@@ -30,7 +30,7 @@ def dijkstra_min_path_sum(grid):
 
 # Read the grid from the file
 # file_path = '/Users/jaecho01/ARMageddon/race_across_abcd/grid_data.txt'
-file_path = '/Users/jaecho01/ARMageddon/race_across_abcd/data_grid.txt'
+file_path = '/Users/jaecho01/ARMageddon/race_across_abcd/data_grid.txt' # Change the file path
 grid = read_data_grid(file_path)
 
 start_time = time.time()
