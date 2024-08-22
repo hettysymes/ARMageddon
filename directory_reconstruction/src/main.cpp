@@ -9,13 +9,13 @@
 std::string get_input(int argc, char **argv)
 {
     std::string input = "";
-    if (argc == 0 || argv[0] == NULL)
+    if (argc == 1 || argv[0] == NULL)
     {
         input = "sample.txt";
     }
     else
     {
-        input == argv[0];
+        input = argv[1];
     }
 
     return input;
@@ -63,7 +63,7 @@ int main(int argc, char **argv)
     }
 
     int total_file_count = ft->get_file_count();
-    cout << total_file_count << ",\"" << ft->get_deepest_path() << "\"," << (double)ft->get_total_depth() / total_file_count << endl;  
+    cout << total_file_count << ",\"" << ft->get_deepest_path() << "\"," << (double)ft->get_total_depth() / total_file_count << endl;
 
     history_file.close();
 }

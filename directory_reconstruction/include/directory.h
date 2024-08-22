@@ -4,17 +4,18 @@
 
 using namespace std;
 
-class Directory {
+class Directory
+{
     Directory *parent;
     string name;
     string path;
     int path_length;
 
-    map<string, Directory*> sub;
+    map<string, Directory *> sub;
 
     vector<string> files;
 
-    public: 
+public:
     Directory(string name);
 
     ~Directory();
@@ -24,7 +25,7 @@ class Directory {
     void set_parent(Directory *parent_directory);
     Directory *get_parent();
 
-    void add_subdirectory(Directory* other);
+    void add_subdirectory(Directory *other);
     Directory *get_subdirectory(string name);
 
     void add_file(string filename);
