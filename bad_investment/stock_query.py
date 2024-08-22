@@ -13,9 +13,9 @@ API_KEY = os.getenv('TWELVE_DATA_API_KEY')
 def get_price_at_date(symbol, date):
     DAYS_TO_CHECK = 10
     TIMES_TO_CHECK_EACH_DAY = 2
+    request_data_format = "%Y-%m-%d"
     for _ in range(DAYS_TO_CHECK):
         next_date = date + timedelta(days=1)
-        request_data_format = "%Y-%m-%d"
         date_str = date.strftime(request_data_format)
         next_date_str = next_date.strftime(request_data_format)
         request_str = f"https://api.twelvedata.com/time_series?apikey={API_KEY}&interval=1day&symbol={symbol}&start_date={date_str} 00:00:00&format=JSON&end_date={next_date_str} 00:00:00"
