@@ -2,6 +2,7 @@
 
 using namespace std;
 
+// This class represents the file system as a whole, assisting with navigation and statistics
 class FileTree
 {
     Directory *root;
