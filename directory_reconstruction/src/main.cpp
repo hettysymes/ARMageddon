@@ -63,7 +63,7 @@ int main(int argc, char **argv)
     }
 
     int total_file_count = ft->get_file_count();
-    cout << total_file_count << ",\"" << ft->get_deepest_path() << "\"," << (double)ft->get_total_depth() / total_file_count << endl;
+    cout << total_file_count << ",\"" << ft->get_deepest_path() << "\"," << round(100.0 * (double)ft->get_total_depth() / total_file_count)/100.0 << endl;
 
     history_file.close();
 }

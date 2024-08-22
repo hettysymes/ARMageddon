@@ -1,6 +1,7 @@
 #include <vector>
 #include <string>
 #include "directory.h"
+#include <iostream>
 
 using namespace std;
 
@@ -8,7 +9,7 @@ Directory::Directory(string name)
 {
     this->name = name;
     this->path = "";
-    this->path_length = 0;
+    this->path_length = 1;
 }
 
 Directory::~Directory()
@@ -67,12 +68,12 @@ pair<int, string> Directory::get_max_path()
 {
     pair<int, string> best = pair<int, string>(this->path_length, this->path + "/");
     if (this->files.size() > 0) {
-        pair<int, string> best = pair<int, string>(this->path_length, this->path + "/" + this->files[0]);
+        best = pair<int, string>(this->path_length, this->path + "/" + this->files[0]);
     }
     for (map<string, Directory *>::iterator itr = this->sub.begin(); itr != this->sub.end(); itr++)
     {
         pair<int, string> sub_max_length = itr->second->get_max_path();
-        if (sub_max_length.first >= best.first)
+        if (sub_max_length.first > best.first)
         {
             best = sub_max_length;
         }
