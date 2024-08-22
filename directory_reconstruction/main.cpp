@@ -45,11 +45,9 @@ int main(int argc, char **argv)
         {
             std::string dir_name = line.substr(5);
             ft->cd(dir_name);
-            cout << "cd to " << dir_name << endl;
         }
         else if (std::regex_match(line, LS_PATTERN))
         {
-            cout << "ls used" << endl;
         }
         else if (std::regex_match(line, match, DIR_PATTERN))
         {
@@ -63,7 +61,9 @@ int main(int argc, char **argv)
             ft->add_file(name);
         }
     }
-    cout << ft->file_count() << "\n";
+
+    int total_file_count = ft->get_file_count();
+    cout << total_file_count << ",\"" << ft->get_deepest_path() << "\"," << (double)ft->get_total_depth() / total_file_count << endl;  
 
     history_file.close();
 }

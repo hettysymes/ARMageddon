@@ -1,21 +1,15 @@
 #include <vector>
 #include <string>
-#include <iostream>
 #include "directory.h"
 
 using namespace std;
 
 
 Directory::Directory(string name) {
-    cout << "running constructor" << endl;
     this->name = name;
     this->path = "";
-    cout << "constructed directory " << name << endl;
+    this->path_length = 0;
 }
-
-// Directory &Directory::operator=(const Directory &other) {
-
-// }
 
 Directory::~Directory() {
     for (map<string, Directory*>::iterator itr = this->sub.begin(); itr != this->sub.end(); itr++) {
@@ -30,6 +24,7 @@ string Directory::get_path() {
 void Directory::set_parent(Directory *parent_directory) {
     this->parent = parent_directory;
     this->path = parent_directory->path + "/" + this->name;
+    this->path_length = parent_directory->path_length+1;
 }
 
 Directory *Directory::get_parent() {
@@ -49,6 +44,32 @@ void Directory::add_file(string filename) {
     this->files.push_back(filename);
 }
 
-int Directory::count_files() {
-    return this->files.size();
+int Directory::get_file_count() {
+    int total = 0;
+    for (map<string, Directory*>::iterator itr = this->sub.begin(); itr != this->sub.end(); itr++) {
+        total += itr->second->get_file_count();
+    }
+    total +=  this->files.size();
+    return total;
 }
+
+pair<int, string> Directory::get_max_path() {
+    pair<int, string> best = pair<int, string>(this->path_length, this->path + "/" + this->files[0]);
+    for (map<string, Directory*>::iterator itr = this->sub.begin(); itr != this->sub.end(); itr++) {
+        pair<int, string> sub_max_length = itr->second->get_max_path();
+        if (sub_max_length.first >= best.first) {
+            best = sub_max_length;
+        }
+    }
+    return best;
+}
+
+int Directory::get_total_depth() {
+    int total = 0;
+    for (map<string, Directory*>::iterator itr = this->sub.begin(); itr != this->sub.end(); itr++) {
+        total += itr->second->get_total_depth();
+    }
+    total +=  this->files.size() * this->path_length;
+    return total;
+}
+

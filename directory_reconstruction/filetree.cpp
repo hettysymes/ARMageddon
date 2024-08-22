@@ -1,5 +1,4 @@
 #include "filetree.h"
-#include <iostream>
 
 using namespace std;
 
@@ -7,7 +6,6 @@ using namespace std;
 FileTree::FileTree() {
     this->root = new Directory("/");
     this->current = this->root;
-    this->total_files = 0;
 }
 
 void FileTree::cd(string name) {
@@ -22,18 +20,23 @@ void FileTree::cd(string name) {
 
 void FileTree::add_file(string name) {
     this->current->add_file(name);
-    this->total_files++;
 }
 
 void FileTree::add_directory(string name) {
-    cout << "Making new dir" << endl;
     Directory *new_directory = new Directory(name);
-    cout << "made new directory";
     this->current->add_subdirectory(new_directory);
 }
 
-int FileTree::file_count() {
-    return this->total_files;
+int FileTree::get_file_count() {
+    return this->root->get_file_count();
+}
+
+string FileTree::get_deepest_path() {
+    return this->root->get_max_path().second;
+}
+
+int FileTree::get_total_depth() {
+    return this->root->get_total_depth();
 }
 
 

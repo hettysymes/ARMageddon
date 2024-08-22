@@ -8,6 +8,7 @@ class Directory {
     Directory *parent;
     string name;
     string path;
+    int path_length;
 
     map<string, Directory*> sub;
 
@@ -15,7 +16,6 @@ class Directory {
 
     public: 
     Directory(string name);
-    // Directory &operator=(const Directory &other);
 
     ~Directory();
 
@@ -29,5 +29,9 @@ class Directory {
 
     void add_file(string filename);
 
-    int count_files();
+    int get_file_count();
+
+    pair<int, string> get_max_path();
+
+    int get_total_depth();
 };
