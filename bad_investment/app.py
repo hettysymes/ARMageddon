@@ -18,7 +18,7 @@ def index():
                 profit_msg = f"Your PROFIT is: {profit:.2f} USD"
             else:
                 profit_msg = f"Your LOSS is: {-profit:.2f} USD"
-            add_msg = f"Old price: {res['old_price']:.2f}\nNew price: {res['now_price']:.2f}\nNumber of stocks bought: {res['num_stock']:.2f}"
+            add_msg = f"Old price: {res['old_price']:.2f} New price: {res['now_price']:.2f} Number of stocks bought: {res['num_stock']:.2f}"
         else:
             profit_msg = "ERROR: could not find the price at this date in our system :("
         return render_template('index.html', profit_msg=profit_msg, add_msg=add_msg)
