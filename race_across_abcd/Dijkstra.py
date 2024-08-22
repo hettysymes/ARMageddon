@@ -29,7 +29,7 @@ def dijkstra_min_path_sum(grid):
     return dist[rows-1][cols-1]
  
 # Read the grid from the file
-grid = read_data_grid('grid_data.txt')
+grid = read_data_grid('data_grid.txt')
  
 # Run the Dijkstra's algorithm on the grid
 start_time = time.time()
