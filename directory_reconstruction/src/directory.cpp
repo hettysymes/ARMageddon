@@ -65,7 +65,10 @@ int Directory::get_file_count()
 
 pair<int, string> Directory::get_max_path()
 {
-    pair<int, string> best = pair<int, string>(this->path_length, this->path + "/" + this->files[0]);
+    pair<int, string> best = pair<int, string>(this->path_length, this->path + "/");
+    if (this->files.size() > 0) {
+        pair<int, string> best = pair<int, string>(this->path_length, this->path + "/" + this->files[0]);
+    }
     for (map<string, Directory *>::iterator itr = this->sub.begin(); itr != this->sub.end(); itr++)
     {
         pair<int, string> sub_max_length = itr->second->get_max_path();
