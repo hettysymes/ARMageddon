@@ -6,14 +6,29 @@
 
 #include "filetree.h"
 
-int main()
+std::string get_input(int argc, char **argv)
+{
+    std::string input = "";
+    if (argc == 0 || argv[0] == NULL)
+    {
+        input = "sample.txt";
+    }
+    else
+    {
+        input == argv[0];
+    }
+
+    return input;
+}
+
+int main(int argc, char **argv)
 {
     static const std::regex CD_PATTERN(R"(\$ cd (.*))");
     static const std::regex LS_PATTERN(R"(\$ ls)");
     static const std::regex FILE_PATTERN(R"((\d+) (.*))");
     static const std::regex DIR_PATTERN(R"(dir (.*))");
 
-    std::string path_to_file = "sample.txt";
+    std::string path_to_file = get_input(argc, argv);
 
     FileTree *ft = new FileTree();
 
