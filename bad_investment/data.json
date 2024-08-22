@@ -1,0 +1,22 @@
+{
+  "meta": {
+    "symbol": "ARM",
+    "interval": "1day",
+    "currency": "USD",
+    "exchange_timezone": "America/New_York",
+    "exchange": "NASDAQ",
+    "mic_code": "XNGS",
+    "type": "Depositary Receipt"
+  },
+  "values": [
+    {
+      "datetime": "2024-08-20",
+      "open": "132.21500",
+      "high": "135.60001",
+      "low": "128.02000",
+      "close": "129.95000",
+      "volume": "5847700"
+    }
+  ],
+  "status": "ok"
+}
