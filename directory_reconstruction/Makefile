@@ -1,5 +1,5 @@
 all:
-	g++ --std=c++14 src/*.cpp -Iinclude -o main
+	g++ --std=c++14 src/*.cpp -Iinclude -o main -O2
 
 clean:
 	rm -rf a.out*

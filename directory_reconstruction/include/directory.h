@@ -4,16 +4,17 @@
 
 using namespace std;
 
+// This class represents a single directory
 class Directory
 {
-    Directory *parent;
+    Directory *parent; // parent directory object
     string name;
     string path;
     int path_length;
 
-    map<string, Directory *> sub;
+    map<string, Directory *> sub; // maps names to subdirectory objects
 
-    vector<string> files;
+    vector<string> files; // stores file names in directory
 
 public:
     Directory(string name);
